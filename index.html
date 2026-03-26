@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        width: 650px;
+        height: 800px;
+        perspective: 1000px;
+    }
+
+    .flip-card-container {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.5s;
+    }
+
+    .front {
+        width: 650px;
+        height: 800px;
+        background-color: #a7c245;
+        /* border-radius: none; */
+
+        position: absolute;
+        backface-visibility: hidden;
+    }
+
+    .card:hover .flip-card-container {
+        transform: rotateY(180deg) rotateY(180deg) rotateY(180deg);
+        /* transform:translateZ(100px); */
+    }
+
+    .back {
+        width: 650px;
+        height: 800px;
+        /* background-color: #f0f0f0; */
+        background-image: url("img/beforeTear.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        /* border-radius: 15%; */
+
+        position: absolute;
+        transform: rotateY(180deg);
+        /* transform:translateZ(100px); */
+        backface-visibility: hidden;
+    }
+
+    .card:hover .back {
+        /* mask-image: url("img/tearEffect.png");
+        -webkit-mask-image: url("img/tearEffect.png"); */
+        mask-size: cover;
+
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+
+        -webkit-mask-size: 200% 100%;
+        mask-size: 200% 100%;
+
+        -webkit-animation: tear 8s linear 0.5s forwards;
+        animation: tear 10s linear 0.5s forwards;
+
+        mask-mode: luminance;
+        -webkit-mask-mode: luminance;
+    }
+
+    @keyframes tear {
+        0% {
+            mask-image: none;
+            -webkit-mask-image: none;
+            /* -webkit-mask-position: -300% 0%;
+            mask-position: -300% 0%; */
+        }
+
+        1% {
+            background-image: url("img/card-bag-o.png");
+            mask-image: linear-gradient(white, white), url("img/card-bag-a.png");
+            -webkit-mask-image: linear-gradient(white, white), url("img/card-bag-a.png");
+            -webkit-mask-position: 0px 0px, -250px 0px;
+            mask-position: 0px 0px, -250px 0px;
+
+            mask-composite: subtract;
+            -webkit-mask-composite: and;
+        }
+
+        100% {
+            background-image: url("img/card-bag-o.png");
+            /* clip-path: polygon(50% 19%, 0 76%, 100% 76%); */
+            mask-image: linear-gradient(white, white), url("img/card-bag-a.png");
+            -webkit-mask-image: linear-gradient(white, white), url("img/card-bag-a.png");
+            -webkit-mask-position: 0px 0px, -650px 0px;
+            mask-position: 0px 0px, -650px 0px;
+        }
+    }
+
+    .cakeEvent {
+        width: 200px;
+        height: 200px;
+    }
+
+    .candle {
+        cursor: grabbing;
+    }
+
+    .dragging {
+        /* transform: scale(2); */
+        opacity: 0.5;
+    }
+
+    .ball{
+        position: fixed;
+        top:0px;
+        left:0px;
+        background-color:#ffc400;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+</style>
+
+<body>
+    <div class="card">
+        <div class="flip-card-container">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+    </div>
+
+    <body>
+        <!-- <script>
+            const candleElement = document.getElementsByClassName('candle')[0];
+            const cakeElement = document.getElementsByClassName('cake')[0];
+
+            candleElement.addEventListener('dragstart', (event) =>{
+                event.target.classList.add('dragging');
+            })
+            cakeElement.addEventListener('dragover', (event) =>{
+                event.target.classList.add('cakeLight');
+            })
+            cakeElement.addEventListener('dragleave', (event) =>{
+                event.target.classList.remove('cakeLight');
+                setTimeout(() => {
+                    event.target.classList.add('cakeLightAfter');
+                }, 1000);
+            })
+        </script> -->
+    <!-- <script>
+        var keyDown = '';
+        const ball = document.getElementsByClassName("ball")[0];
+        let screenHeight = window.innerHeight;
+        let screenWidth = window.innerWidth;
+
+        console.log(`screenWidth = ${screenWidth}, screenHeight = ${screenHeight}`)
+
+        document.addEventListener('keydown', (event)=>{
+            const computedStyle = window.getComputedStyle(ball);
+            let currentTop = parseInt(computedStyle.top);
+            let currentLeft = parseInt(computedStyle.left);
+
+            console.log(`key ${event.key} is pressed.`);
+
+            if(event.key == "ArrowUp" || event.key == "w" || event.key == "W"){  if(currentTop!=0){currentTop = (currentTop - 10) + "px"; ball.style.top = currentTop;}}
+            else if(event.key == "ArrowDown" || event.key == "s" || event.key == "S") {if((currentTop+10) < screenHeight) {currentTop = (currentTop + 10) + "px"; ball.style.top = currentTop;}}
+            else if(event.key == "ArrowLeft" || event.key == "a" || event.key == "A") {if(currentLeft!= 0) {currentLeft = (currentLeft - 10) + "px"; ball.style.left = currentLeft;}}
+            else if(event.key == "ArrowRight" || event.key == "d" || event.key == "D") {if(currentLeft < (screenWidth-100)) {currentLeft = (currentLeft + 10) + "px"; ball.style.left = currentLeft;}}
+
+             console.log(`ball.top = ${currentTop}`);
+             console.log(`ball.left = ${ball.style.left}`);
+        })
+    </script> -->
+
+</html>
