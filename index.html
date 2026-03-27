@@ -1,182 +1,108 @@
 <!DOCTYPE html>
-
-
-
 <html>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Titan+One&family=Vast+Shadow&display=swap');
+
     body {
-        display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        display: flex;
+
+        background: linear-gradient(90deg, #65aeb8 5px, transparent 5px),
+            linear-gradient(#65aeb8 5px, transparent 5px);
+        /* background-size: 100px 100%, 200px 100%, 100% 100px, 100% 200px; */
+        background-size: 50px 50px;
     }
 
-    .card {
-        width: 650px;
-        height: 800px;
-        perspective: 1000px;
+    .main-page {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
 
-    .flip-card-container {
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
+    .penguin {
+        background-image: url("img/penguin.PNG");
+        background-color: transparent;
+        height: 500px;
+        width: 500px;
 
-        position: relative;
-        transform-style: preserve-3d;
-        transition: transform 0.5s;
+        animation: penguinAnimation 2s linear 0s infinite;
+
     }
 
-    .front {
-        width: 650px;
-        height: 800px;
-        background-color: #a7c245;
-        /* border-radius: none; */
-
-        position: absolute;
-        backface-visibility: hidden;
-    }
-
-    .card:hover .flip-card-container {
-        transform: rotateY(180deg) rotateY(180deg) rotateY(180deg);
-        /* transform:translateZ(100px); */
-    }
-
-    .back {
-        width: 650px;
-        height: 800px;
-        /* background-color: #f0f0f0; */
-        background-image: url("img/beforeTear.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        /* border-radius: 15%; */
-
-        position: absolute;
-        transform: rotateY(180deg);
-        /* transform:translateZ(100px); */
-        backface-visibility: hidden;
-    }
-
-    .card:hover .back {
-        /* mask-image: url("img/tearEffect.png");
-        -webkit-mask-image: url("img/tearEffect.png"); */
-        mask-size: cover;
-
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-
-        -webkit-mask-size: 200% 100%;
-        mask-size: 200% 100%;
-
-        -webkit-animation: tear 8s linear 0.5s forwards;
-        animation: tear 10s linear 0.5s forwards;
-
-        mask-mode: luminance;
-        -webkit-mask-mode: luminance;
-    }
-
-    @keyframes tear {
-        0% {
-            mask-image: none;
-            -webkit-mask-image: none;
-            /* -webkit-mask-position: -300% 0%;
-            mask-position: -300% 0%; */
-        }
-
-        1% {
-            background-image: url("img/card-bag-o.png");
-            mask-image: linear-gradient(white, white), url("img/card-bag-a.png");
-            -webkit-mask-image: linear-gradient(white, white), url("img/card-bag-a.png");
-            -webkit-mask-position: 0px 0px, -250px 0px;
-            mask-position: 0px 0px, -250px 0px;
-
-            mask-composite: subtract;
-            -webkit-mask-composite: and;
-        }
-
-        100% {
-            background-image: url("img/card-bag-o.png");
-            /* clip-path: polygon(50% 19%, 0 76%, 100% 76%); */
-            mask-image: linear-gradient(white, white), url("img/card-bag-a.png");
-            -webkit-mask-image: linear-gradient(white, white), url("img/card-bag-a.png");
-            -webkit-mask-position: 0px 0px, -650px 0px;
-            mask-position: 0px 0px, -650px 0px;
-        }
-    }
-
-    .cakeEvent {
-        width: 200px;
-        height: 200px;
-    }
-
-    .candle {
-        cursor: grabbing;
-    }
-
-    .dragging {
-        /* transform: scale(2); */
-        opacity: 0.5;
-    }
-
-    .ball{
+    .penguinTrigger {
+        height: 350px;
+        width: 250px;
         position: fixed;
-        top:0px;
-        left:0px;
-        background-color:#ffc400;
-        width: 100px;
-        height: 100px;
+        top: calc(50vh - 250px);
+        left: calc(50vw - 125px);
+        /* color: brown;
+        background-color: rgb(214, 12, 12); */
+        z-index: 99;
+
+
+    }
+
+    .penguinTrigger:hover+.penguin {
+        animation: penguinHoverAnimation 2s linear 0s infinite;
+        z-index: 999;
+    }
+
+
+    .startBtn {
+        height: 8vh;
+        width: 15vw;
+        margin-top: none;
+
+        /* position: relative; */
+
         border-radius: 50%;
+        border: none;
+        background-color: rgb(255, 196, 0);
+        font-size: 25px;
+        color: antiquewhite;
+        font-family: "Vast Shadow", serif;
+    }
+
+    .startBtn:hover {
+        background-color: rgb(249, 89, 25);
+        box-shadow: rgb(56, 39, 39) 5px 5px 8px;
+    }
+
+    @keyframes penguinAnimation {
+        0% {
+            transform: none;
+        }
+
+        50% {
+            transform: rotate(15deg);
+        }
+
+        50% {
+            transform: rotate(-15deg);
+        }
+    }
+
+    @keyframes penguinHoverAnimation {
+        0% {
+            transform: rotate(360deg);
+        }
+        100% {
+            transform: rotate(-360deg);
+        }
     }
 </style>
 
 <body>
-    <div class="card">
-        <div class="flip-card-container">
-            <div class="front"></div>
-            <div class="back"></div>
-        </div>
+    <div class="main-page">
+        <div class="penguinTrigger"></div>
+        <div class="penguin"></div>
+
+        <button class="startBtn">Los geht's</button>
     </div>
 
     <body>
-        <!-- <script>
-            const candleElement = document.getElementsByClassName('candle')[0];
-            const cakeElement = document.getElementsByClassName('cake')[0];
-
-            candleElement.addEventListener('dragstart', (event) =>{
-                event.target.classList.add('dragging');
-            })
-            cakeElement.addEventListener('dragover', (event) =>{
-                event.target.classList.add('cakeLight');
-            })
-            cakeElement.addEventListener('dragleave', (event) =>{
-                event.target.classList.remove('cakeLight');
-                setTimeout(() => {
-                    event.target.classList.add('cakeLightAfter');
-                }, 1000);
-            })
-        </script> -->
-    <!-- <script>
-        var keyDown = '';
-        const ball = document.getElementsByClassName("ball")[0];
-        let screenHeight = window.innerHeight;
-        let screenWidth = window.innerWidth;
-
-        console.log(`screenWidth = ${screenWidth}, screenHeight = ${screenHeight}`)
-
-        document.addEventListener('keydown', (event)=>{
-            const computedStyle = window.getComputedStyle(ball);
-            let currentTop = parseInt(computedStyle.top);
-            let currentLeft = parseInt(computedStyle.left);
-
-            console.log(`key ${event.key} is pressed.`);
-
-            if(event.key == "ArrowUp" || event.key == "w" || event.key == "W"){  if(currentTop!=0){currentTop = (currentTop - 10) + "px"; ball.style.top = currentTop;}}
-            else if(event.key == "ArrowDown" || event.key == "s" || event.key == "S") {if((currentTop+10) < screenHeight) {currentTop = (currentTop + 10) + "px"; ball.style.top = currentTop;}}
-            else if(event.key == "ArrowLeft" || event.key == "a" || event.key == "A") {if(currentLeft!= 0) {currentLeft = (currentLeft - 10) + "px"; ball.style.left = currentLeft;}}
-            else if(event.key == "ArrowRight" || event.key == "d" || event.key == "D") {if(currentLeft < (screenWidth-100)) {currentLeft = (currentLeft + 10) + "px"; ball.style.left = currentLeft;}}
-
-             console.log(`ball.top = ${currentTop}`);
-             console.log(`ball.left = ${ball.style.left}`);
-        })
-    </script> -->
 
 </html>
