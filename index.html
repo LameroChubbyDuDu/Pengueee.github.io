@@ -25,8 +25,8 @@
     .penguin {
         background-image: url("img/penguin.PNG");
         background-color: transparent;
-        height: 500px;
-        width: 500px;
+        height: 1200px;
+        width: 1200px;
 
         animation: penguinAnimation 2s linear 0s infinite;
 
@@ -35,13 +35,12 @@
 
 
     .penguinTrigger {
-        height: 350px;
-        width: 250px;
+        height: 800px;
+        width: 650px;
         position: fixed;
         top: calc(50vh - 250px);
         left: calc(50vw - 125px);
-        /* color: brown;
-        background-color: rgb(214, 12, 12); */
+        color: blue;
         z-index: 99;
 
 
@@ -73,20 +72,19 @@
         box-shadow: rgb(56, 39, 39) 5px 5px 8px;
     }
 
-    @media(max-width:480px) {
+    @media(min-width:1200px) {
         .penguin {
             height: 1200px;
             width: 1200px;
         }
 
         .penguinTrigger {
-            height: 800px;
-            width: 650px;
-            position: fixed;
+
+            height: 350px;
+            width: 250px;
             top: calc(50vh - 250px);
             left: calc(50vw - 125px);
-            color:blue;
-            
+
         }
 
     }
