@@ -32,6 +32,8 @@
 
     }
 
+
+
     .penguinTrigger {
         height: 350px;
         width: 250px;
@@ -71,6 +73,24 @@
         box-shadow: rgb(56, 39, 39) 5px 5px 8px;
     }
 
+    @media(max-width:480px) {
+        .penguin {
+            height: 1200px;
+            width: 1200px;
+        }
+
+        .penguinTrigger {
+            height: 800px;
+            width: 650px;
+            position: fixed;
+            top: calc(50vh - 250px);
+            left: calc(50vw - 125px);
+            color:blue;
+            
+        }
+
+    }
+
     @keyframes penguinAnimation {
         0% {
             transform: none;
@@ -89,6 +109,7 @@
         0% {
             transform: rotate(360deg);
         }
+
         100% {
             transform: rotate(-360deg);
         }
