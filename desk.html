@@ -19,7 +19,7 @@
         text-align: center;
     }
 
-    .back{
+    .back {
         display: flex;
         flex-direction: row;
     }
@@ -33,7 +33,7 @@
         background-color: transparent;
 
         position: relative;
-        
+
         margin-left: 10px;
     }
 
@@ -67,7 +67,7 @@
 
     }
 
-    .pcBtn{
+    .pcBtn {
         background-image: url("img/pc-on-off.png");
         background-size: contain;
         width: 25px;
@@ -78,7 +78,7 @@
         border-radius: 50%;
     }
 
-    .signal{
+    .signal {
         height: 8px;
         width: 8px;
         border-radius: 50%;
@@ -130,15 +130,15 @@
         color: #bda97f;
     }
 
-    .core{
+    .core {
         background-image: url("img/core.png");
         background-color: transparent;
         height: 500px;
-        width:180px;
+        width: 180px;
         position: relative;
     }
 
-    .coreBtn{
+    .coreBtn {
         background-image: url("img/on-off.png");
         background-position: center;
         background-size: contain;
@@ -146,8 +146,27 @@
         bottom: 20%;
         right: 15%;
         width: 30px;
-        height:30px;
-        
+        height: 30px;
+
+    }
+
+    .askToRotate {
+        background-color: black;
+        color: beige;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    @media (orientation: portrait) {
+        .askToRotate {
+            display: revert;
+        }
+    }
+
+    @media (orientation: landscape) {
+        .askToRotate {
+            display: none;
+        }
     }
 
 
@@ -155,7 +174,9 @@
 </style>
 
 <body>
+    <div class="askToRotate" style="display: none;">請旋轉螢幕</div>
     <div class="desk-page">
+
         <div class="back">
             <div class="core"><button class="coreBtn"></button>
             </div>
@@ -163,14 +184,14 @@
                 <button class="pcBtn"></button>
                 <div class="signal"></div>
                 <p class="hint" style="display: none;">please inert the password</p>
-                <div class="screen"  style="display: none;">
+                <div class="screen" style="display: none;">
                     <input type="text" id="key1">
                     <input type="text" id="key2">
                     <input type="text" id="key3">
                 </div>
-                <input type="button" value="submit" class="keyBtn"  style="display: none;">
+                <input type="button" value="submit" class="keyBtn" style="display: none;">
             </div>
-            
+
         </div>
 
     </div>
@@ -196,18 +217,18 @@
                 }
             })
 
-            coreBtn.addEventListener('click', ()=>{
-                if(pcSignalOn == true){
+            coreBtn.addEventListener('click', () => {
+                if (pcSignalOn == true) {
                     hint.setAttribute("style", "display:''");
                     screenElement.setAttribute("style", "display:''");
                     keyBtn.setAttribute("style", "display:''");
-                    coreBtn.style.outlineColor=rgba(35, 228, 48, 0.87);
+                    coreBtn.style.outlineColor = rgba(35, 228, 48, 0.87);
                 }
-                
+
             })
 
-            pcBtn.addEventListener('click', ()=>{
-                pcSignal.style.backgroundColor="rgba(35, 228, 48, 0.87)";
+            pcBtn.addEventListener('click', () => {
+                pcSignal.style.backgroundColor = "rgba(35, 228, 48, 0.87)";
                 pcSignalOn = true;
             })
         </script>
