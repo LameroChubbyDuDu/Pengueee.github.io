@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+    body {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        display: flex;
+
+        /* background:linear-gradient(90deg, rgb(216, 68, 68) 5px, rgb(247, 175, 175) 5px, transparent 5px), 
+        linear-gradient(rgb(216, 68, 68) 5px, rgb(247, 175, 175) 5px, transparent 5px);
+        background-size: 50px 50px ; */
+
+        background-color: rgb(255, 226, 183);
+
+    }
+
+    .match-box {
+        background-image: url("img/match-box.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 220px;
+        height: 220px;
+        border: none;
+        background-color: transparent;
+        left: 80vw;
+        top: 60vh;
+        position: absolute;
+
+    }
+
+    .match {
+        background-image: url("img/match.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 220px;
+        height: 220px;
+        cursor: grab;
+        z-index: 999;
+        left: 90vw;
+        top: 40vh;
+        position: absolute;
+    }
+
+    .match-box-fake {
+        width: 150px;
+        height: 150px;
+        border: none;
+        background-color: rgb(181, 29, 29);
+        /* left: 20px; */
+        margin-right: 5px;
+        position: absolute;
+    }
+
+    .cake {
+        background-image: url("img/cake-2.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 80vw;
+        height: 45vw;
+        /* margin-top: -60px; */
+        top: 10%;
+        left: 5%;
+        position: fixed;
+    }
+
+    .hint-1 {
+        /* background-color: beige; */
+        background: linear-gradient(90deg, #ce2f2f 5px, transparent 5px);
+        background: linear-gradient(#ce2f2f 5px, transparent 5px);
+        background-size: 20vw 5vh;
+        color: black;
+        width: 20vw;
+        height: 5vh;
+        position: absolute;
+        top: 0vh;
+        left: 0vw;
+        z-index: 9999;
+        text-align: center;
+    }
+
+    .hint-2 {
+        background-color: beige;
+        color: black;
+        width: 25vw;
+        height: 8vh;
+        position: absolute;
+        top: 40vh;
+        left: 40vw;
+        z-index: 9999;
+        text-align: center;
+    }
+
+    .fire {
+        animation: firing 3s ease-in-out infinite;
+        clip-path: ellipse(40% 50% at 50% 100%);
+        border-radius: 60% 60% 60% 60% / 80% 80% 30% 30%;
+        width: 30px;
+        height: 30px;
+        overflow: visible;
+        background-color: rgb(241, 44, 9);
+        opacity: 0.5;
+        z-index: 99999;
+    }
+
+    @keyframes firing {
+        0% {
+            clip-path: ellipse(45% 100% at 50% 100%);
+            background-color: rgb(243, 135, 26);
+            opacity: 0.4;
+            transform: rotate(3deg);
+        }
+
+        50% {
+            clip-path: ellipse(55% 80% at 50% 100%);
+            background-color: rgb(250, 201, 53);
+            opacity: 0.5;
+            transform: rotate(-3deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="cake-page">
+        <div class="hint-1">Light up the candle.</div>
+        <div class="hint-2" style="display:none;">You have to light up the match first.</div>
+        <div class="match-box-container">
+            <input type="button" class="match-box">
+        </div>
+
+        <div class="match" style="display: none;" draggable="true"></div>
+
+        <div class="fire" style="display:none;"></div>
+        <div class="cake" style="display: none;"></div>
+
+    </div>
+
+    <body>
+        <script>
+            const matchBox = document.getElementsByClassName('match-box')[0];
+            const match = document.getElementsByClassName('match')[0];
+            const cake = document.getElementsByClassName('cake')[0];
+            const hint2 = document.getElementsByClassName('hint-2')[0];
+            const fire = document.getElementsByClassName('fire')[0];
+            let light = false;
+
+            matchBox.addEventListener('click', (e) => {
+                match.style.display = '';
+                cake.style.display = '';
+
+            });
+
+            match.addEventListener('drag', (e) => {
+                // console.log(`x=${match.style.left}, y=${match.style.top}`);
+                // console.log(match.offsetLeft);
+                match.offsetLeft = e.clientX;
+                match.offsetTop = e.clientY;
+                match.style.top = match.offsetTop + "px";
+                match.style.left = match.offsetLeft + "px";
+            });
+
+            matchBox.addEventListener('dragover', (e) => {
+                console.log("drag start");
+                match.style.backgroundImage = "url('img/match-fire.png')";
+                light = true;
+            });
+
+            cake.addEventListener('dragover', (e) => {
+                if (light == true) {
+                    console.log('happy');
+                    fire.style.display = '';
+                } else {
+                    hint2.style.display = '';
+                }
+            })
+
+            cake.addEventListener('dragleave', (e) => {
+                hint2.setAttribute("style", "display:none");
+            })
+        </script>
+
+</html>
