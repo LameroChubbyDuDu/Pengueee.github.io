@@ -23,12 +23,12 @@
         background-image: url("img/match-box.png");
         background-size: contain;
         background-repeat: no-repeat;
-        width: 220px;
-        height: 220px;
+        width: 250px;
+        height: 250px;
         border: none;
         background-color: transparent;
-        left: 80vw;
-        top: 60vh;
+        left: 70vw;
+        top: 50vh;
         position: absolute;
 
     }
@@ -41,7 +41,7 @@
         height: 220px;
         cursor: grab;
         z-index: 999;
-        left: 90vw;
+        left: 80vw;
         top: 40vh;
         position: absolute;
     }
@@ -60,8 +60,8 @@
         background-image: url("img/cake-2.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 80vw;
-        height: 45vw;
+        width: 64vw;
+        height: 36vw;
         /* margin-top: -60px; */
         top: 10%;
         left: 5%;
@@ -69,11 +69,11 @@
     }
 
     .hint-1 {
-        /* background-color: beige; */
-        background: linear-gradient(90deg, #ce2f2f 5px, transparent 5px);
-        background: linear-gradient(#ce2f2f 5px, transparent 5px);
-        background-size: 20vw 5vh;
-        color: black;
+        background-color: rgb(72, 27, 3);
+        /* background: linear-gradient(90deg, #fff7f7 5px, #ce2f2f 5px, #ce2f2f 10px, transparent 10px), linear-gradient(#fff7f7 5px,#ce2f2f 5px, #ce2f2f 10px, transparent 10px);
+        background-size: 20px 15px; */
+        color: rgb(255, 240, 218);
+        font-size: 20px;
         width: 20vw;
         height: 5vh;
         position: absolute;
@@ -81,6 +81,7 @@
         left: 0vw;
         z-index: 9999;
         text-align: center;
+        font-family: "Jersey 15", sans-serif;
     }
 
     .hint-2 {
@@ -93,30 +94,46 @@
         left: 40vw;
         z-index: 9999;
         text-align: center;
+        font-family: "Jersey 15", sans-serif;
+        font-size: 20px;
     }
 
     .fire {
         animation: firing 3s ease-in-out infinite;
-        clip-path: ellipse(40% 50% at 50% 100%);
+        clip-path: ellipse(40% 50% at 50% 80%);
         border-radius: 60% 60% 60% 60% / 80% 80% 30% 30%;
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
         overflow: visible;
-        background-color: rgb(241, 44, 9);
+        background-color: rgb(236, 128, 40);
         opacity: 0.5;
         z-index: 99999;
+        position: absolute;
+        top: 12.5vh;
+        left: 39.5vw;
+        }
+
+    .fake-candle {
+        width: 30px;
+        height: 50px;
+        background-color: transparent;
+        position: absolute;
+        top: 12.5vh;
+        left: 39.8vw;
+        z-index: 9999;
+
     }
 
     @keyframes firing {
         0% {
-            clip-path: ellipse(45% 100% at 50% 100%);
+            clip-path: ellipse(45% 100% at 50% 80%);
             background-color: rgb(243, 135, 26);
             opacity: 0.4;
             transform: rotate(3deg);
         }
 
         50% {
-            clip-path: ellipse(55% 80% at 50% 100%);
+            clip-path: ellipse(55% 80% at 50% 80%);
             background-color: rgb(250, 201, 53);
             opacity: 0.5;
             transform: rotate(-3deg);
@@ -135,6 +152,7 @@
         <div class="match" style="display: none;" draggable="true"></div>
 
         <div class="fire" style="display:none;"></div>
+        <div class="fake-candle" style="display:none;"></div>
         <div class="cake" style="display: none;"></div>
 
     </div>
@@ -146,11 +164,16 @@
             const cake = document.getElementsByClassName('cake')[0];
             const hint2 = document.getElementsByClassName('hint-2')[0];
             const fire = document.getElementsByClassName('fire')[0];
+            const fakeCandle = document.getElementsByClassName('fake-candle')[0];
             let light = false;
+
+            const img = new Image();
+            img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; // A transparent 1x1 pixel
 
             matchBox.addEventListener('click', (e) => {
                 match.style.display = '';
                 cake.style.display = '';
+                fakeCandle.style.display = '';
 
             });
 
@@ -169,7 +192,7 @@
                 light = true;
             });
 
-            cake.addEventListener('dragover', (e) => {
+            fakeCandle.addEventListener('dragover', (e) => {
                 if (light == true) {
                     console.log('happy');
                     fire.style.display = '';
