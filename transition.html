@@ -11,7 +11,7 @@
 
         display: flex;
 
-        background-color: rgb(90, 151, 152)
+        background-color: rgb(114, 95, 83)
         /* background:linear-gradient(90deg, rgb(216, 68, 68) 5px, rgb(247, 175, 175) 10px, transparent 5px);*/
         /* background-size: 10px 10px ; */
     }
@@ -68,6 +68,8 @@
         color: rgb(163, 17, 17);
         font-family: "Jersey 15", sans-serif;
         top: 30vh;
+
+        animation: wordAnimation 2s ease-in-out infinite;
     }
 
 
@@ -81,6 +83,16 @@
 
         100% {
             transform: rotateZ(-360deg);
+        }
+    }
+
+    @keyframes wordAnimation {
+        0% {
+            font-size: 100px;
+        }
+
+        100% {
+            font-size: 250px;
         }
     }
 </style>
