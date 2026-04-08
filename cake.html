@@ -69,7 +69,7 @@
     }
 
     .hint-1 {
-        background-color: rgb(243, 150, 0);
+        background-color: rgb(67, 24, 6);
         /* background: linear-gradient(90deg, #fff7f7 5px, #ce2f2f 5px, #ce2f2f 10px, transparent 10px), linear-gradient(#fff7f7 5px,#ce2f2f 5px, #ce2f2f 10px, transparent 10px);
         background-size: 20px 15px; */
         color: rgb(255, 240, 218);
@@ -124,6 +124,16 @@
 
     }
 
+    footer {
+        font-family: "Jersey 15", sans-serif;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        color:rgb(127, 61, 0);
+        text-align: center;
+        z-index: 9999;
+    }
+
     @keyframes firing {
         0% {
             clip-path: ellipse(45% 100% at 50% 80%);
@@ -168,6 +178,8 @@
             const bg = document.getElementsByClassName('bg')[0];
             let light = false;
 
+            const audio = new Audio('music/piano.m4a');
+
             // const img = new Image();
             // img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
@@ -175,8 +187,9 @@
                 match.style.display = '';
                 // cake.style.display = '';
                 fakeCandle.style.display = '';
+                audio.play();
 
-            });
+            }, {once: true});
 
             match.addEventListener('drag', (e) => {
                 console.log(`x=${match.style.left}, y=${match.style.top}`);
@@ -211,7 +224,7 @@
                     bg.style.backgroundColor = 'rgb(21, 21, 20)';
                     setTimeout(()=>{
                         window.location.replace('transition.html');
-                    }, 6000);
+                    }, 7000);
                 } else {
                     hint2.style.display = '';
                 }
@@ -221,5 +234,6 @@
                 hint2.setAttribute("style", "display:none");
             })
         </script>
+        <footer>&#169; background music by</footer>
 
 </html>
