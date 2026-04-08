@@ -141,7 +141,7 @@
     }
 </style>
 
-<body>
+<body class="bg">
     <div class="cake-page">
         <div class="hint-1">Light up the candle.</div>
         <div class="hint-2" style="display:none;">You have to light up the match first.</div>
@@ -165,6 +165,7 @@
             const hint2 = document.getElementsByClassName('hint-2')[0];
             const fire = document.getElementsByClassName('fire')[0];
             const fakeCandle = document.getElementsByClassName('fake-candle')[0];
+            const bg = document.getElementsByClassName('bg')[0];
             let light = false;
 
             // const img = new Image();
@@ -207,6 +208,10 @@
                 if (light == true) {
                     console.log('happy');
                     fire.style.display = '';
+                    bg.style.backgroundColor = 'rgb(21, 21, 20)';
+                    setTimeout(()=>{
+                        window.location.replace('letter.html');
+                    }, 6000);
                 } else {
                     hint2.style.display = '';
                 }
