@@ -11,31 +11,63 @@
 
         display: flex;
 
-        background-color: antiquewhite;
-        /* background:linear-gradient(90deg, rgb(216, 68, 68) 5px, rgb(247, 175, 175) 10px, transparent 5px);
-        background-size: 10px 10px ; */
+        background-color: rgb(90, 151, 152)
+        /* background:linear-gradient(90deg, rgb(216, 68, 68) 5px, rgb(247, 175, 175) 10px, transparent 5px);*/
+        /* background-size: 10px 10px ; */
     }
 
-    .penguin-box{
+    .trans-box {
         align-items: center;
-        justify-content:center;
+        justify-content: center;
+        text-align: center;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .penguin-box {
+        align-items: center;
+        justify-content: center;
         text-align: center;
 
         display: flex;
         flex-direction: row;
         position: relative;
 
-        top: 30vh;
+        top: 0vh;
     }
-    
-    .penguin-1, .penguin-2, .penguin-3{
+
+    .penguin-1,
+    .penguin-2,
+    .penguin-3 {
         background-image: url("img/penguin.PNG");
         background-size: contain;
         background-repeat: no-repeat;
         width: 200px;
-        height:200px;
+        height: 200px;
 
         animation: danceAnimation 2s linear infinite;
+    }
+
+    .txt-1 {
+        font-size: 50px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        color: rgb(255, 255, 255);
+        font-family: "Jersey 15", sans-serif;
+        /* position: absolute; */
+        /* margin-top: 10vh; */
+    }
+
+    .txt-2 {
+        font-size: 120px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        color: rgb(163, 17, 17);
+        font-family: "Jersey 15", sans-serif;
+        top: 30vh;
     }
 
 
@@ -43,27 +75,43 @@
     @media(min-width:1200px) {}
 
     @keyframes danceAnimation {
-        0%{
-            transform:rotateZ(360deg);
+        0% {
+            transform: rotateZ(360deg);
         }
-        100%{
-            transform:rotateZ(-360deg);
+
+        100% {
+            transform: rotateZ(-360deg);
         }
     }
 </style>
 
-<body>
-    <div class="penguin-box">
-        <div class="penguin-1"></div>
-        <div class="penguin-2"></div>
-        <div class="penguin-3"></div>
+<body class="bg">
+    <div class="trans-box">
+        <p class="txt-1">You think that's all?</p>
+        <p class="txt-2" style="display:none;">Nahhhhhhh!!!</p>
+        <div class="penguin-box">
+            <div class="penguin-1"></div>
+            <div class="penguin-2"></div>
+            <div class="penguin-3"></div>
+        </div>
     </div>
 
     <body>
         <script>
-            setTimeout(() =>{
-                window.location.replace('cake.html');
+            txt1 = document.getElementsByClassName("txt-1")[0];
+            txt2 = document.getElementsByClassName("txt-2")[0];
+            bg = document.getElementsByClassName("bg")[0];
+            penguinBox = document.getElementsByClassName("penguin-box")[0];
+            setTimeout(() => {
+                txt1.style.display = 'none';
+                txt2.style.display = '';
+                penguinBox.style.display = 'none';
+                bg.style.backgroundColor = "rgb(66, 18, 2)";
             }, 2000);
+
+            setTimeout(() => {
+                window.location.replace('letter.html');
+            }, 3000);
         </script>
 
 </html>
