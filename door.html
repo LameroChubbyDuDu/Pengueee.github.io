@@ -19,26 +19,15 @@
         text-align: center;
     }
 
+    .card{
+        background-image: url("img/id-card.png");
+        width:500px;
+        height:350px;
+    }
+
 
     @media(min-width:1200px) {
-        .penguin {
-            height: 500px;
-            width: 500px;
-        }
-
-        .penguinTrigger {
-
-            height: 350px;
-            width: 250px;
-            top: calc(50vh - 250px);
-            left: calc(50vw - 125px);
-            background-color: transparent;
-
-        }
-
-        .startBtn {
-            margin-top: none;
-        }
+        
 
     }
 </style>
@@ -46,6 +35,7 @@
 <body>
     <div class="door-page">
         <div class="door"></div>
+        <div class="card" draggable="true"></div>
     </div>
 
     <body>

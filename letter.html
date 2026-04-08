@@ -4,6 +4,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&display=swap');
+
     body {
         align-items: center;
         justify-content: center;
@@ -11,11 +12,11 @@
 
         display: flex;
 
-        background:linear-gradient(90deg, rgb(216, 68, 68) 5px, rgb(247, 175, 175) 5px);
-        background-size: 50px 50px ;
+        background: linear-gradient(90deg, rgb(216, 68, 68) 5px, rgb(247, 175, 175) 5px);
+        background-size: 50px 50px;
     }
 
-    .hint{
+    .hint {
         font-family: "Jersey 15", cursive;
         font-size: 30px;
         color: #b60836;
@@ -27,27 +28,35 @@
         margin-bottom: 5px;
         right: 0;
         /* margin-top: 0px; */
-        
+
     }
-    .mail-box{
+
+    .mail-box {
         margin-top: 15vh;
         align-items: center;
-        justify-content:center;
+        justify-content: center;
         text-align: center;
 
         display: grid;
-        grid-template-columns: repeat(4, 200px);
+        grid-template-columns: repeat(3, 200px);
 
         position: relative;
-        gap:35px;
+        gap: 35px;
     }
 
-    .mail-1, .mail-2, .mail-3, .mail-4, .mail-5, .mail-6, .mail-7, .mail-8 {
+    .mail-1,
+    .mail-2,
+    .mail-3,
+    .mail-4,
+    .mail-5,
+    .mail-6,
+    .mail-7,
+    .mail-8 {
         background-image: url("img/letter2.png");
         background-size: contain;
         background-repeat: no-repeat;
         width: 200px;
-        height:200px;
+        height: 200px;
         position: relative;
 
         align-items: center;
@@ -56,26 +65,46 @@
 
     }
 
-    .letter-1, .letter-2, .letter-3, .letter-4, .letter-5, .letter-6, .letter-7, .letter-8 {
+    .letter-1,
+    .letter-2,
+    .letter-3,
+    .letter-4,
+    .letter-5,
+    .letter-6,
+    .letter-7,
+    .letter-8 {
         background-color: #FFFFFF;
         width: 150px;
         height: 50px;
-        position:absolute;
+        position: absolute;
         top: 16.8%;
         left: 13%;
-        
+
     }
 
-    .letterWithContent-1, .letterWithContent-2, .letterWithContent-3, .letterWithContent-4, .letterWithContent-5, .letterWithContent-6, .letterWithContent-7, .letterWithContent-8 {
+    .letterWithContent-1,
+    .letterWithContent-2,
+    .letterWithContent-3,
+    .letterWithContent-4,
+    .letterWithContent-5,
+    .letterWithContent-6,
+    .letterWithContent-7,
+    .letterWithContent-8 {
         background-color: #FFFFFF;
         width: 150px;
         height: 160px;
-        position:absolute;
+        position: absolute;
         left: 13%;
         clip-path: inset(100% 0 0 0);
     }
 
-    .word-1, .word-2, .word-3, .word-4, .word-5, .word-6, .word-7{
+    .word-1,
+    .word-2,
+    .word-3,
+    .word-4,
+    .word-5,
+    .word-6,
+    .word-7 {
         font-family: "Crimson Pro", serif;
         font-family: "Chiron GoRound TC", sans-serif;
         font-size: 15px;
@@ -87,7 +116,7 @@
         margin-right: 10%;
     }
 
-    .word-8{
+    .word-8 {
         font-family: "Crimson Pro", serif;
         font-size: 8px;
         color: #000000;
@@ -104,46 +133,51 @@
         background-size: contain;
     } */
 
-    .mail-1:hover .letterWithContent-1{ 
+    .mail-1:hover .letterWithContent-1 {
         animation: letterAnimation 2s linear forwards;
     }
 
-    .mail-2:hover .letterWithContent-2{ 
+    .mail-2:hover .letterWithContent-2 {
         animation: letterAnimation 2s linear forwards;
     }
 
-    .mail-3:hover .letterWithContent-3{ 
+    .mail-3:hover .letterWithContent-3 {
         animation: letterAnimation 2s linear forwards;
     }
 
-    .mail-4:hover .letterWithContent-4{ 
+    .mail-4:hover .letterWithContent-4 {
         animation: letterAnimation 2s linear forwards;
     }
 
-    .mail-5:hover .letterWithContent-5{ 
+    .mail-5:hover .letterWithContent-5 {
         animation: letterAnimation 2s linear forwards;
     }
 
-    .mail-6:hover .letterWithContent-6{ 
+    .mail-6:hover .letterWithContent-6 {
         animation: letterAnimation 2s linear forwards;
     }
 
-    .mail-7:hover .letterWithContent-7{ 
+    .mail-7:hover .letterWithContent-7 {
         animation: letterAnimation 2s linear forwards;
     }
 
-    .mail-8:hover .letterWithContent-8{ 
+    .mail-8:hover .letterWithContent-8 {
         animation: letterAnimation 2s linear forwards;
     }
 
-    @media(min-width:1200px) {}
+    @media(max-width:750px) {
+        .mail-box {
+            grid-template-columns: repeat(2, 200px);
+        }
+    }
 
     @keyframes letterAnimation {
-        0%{
+        0% {
             top: -38%;
             clip-path: inset(100% 0 0 0);
         }
-        100%{
+
+        100% {
             top: -40%;
             clip-path: inset(0% 0 0 0);
         }
@@ -152,19 +186,55 @@
 
 <body>
     <div class="desk-page">
-        
+
         <div class="mail-box">
             <div class="mail-1">
                 <!-- <div class="letter-1"></div> -->
-                <div class="letterWithContent-1"><div class="word-1">A = D<br>Kdssb Eluwkgdb<br><br>- Vdeulqd</div></div>
+                <div class="letterWithContent-1">
+                    <div class="word-1">A = D<br>Kdssb Eluwkgdb<br><br>- Vdeulqd</div>
+                </div>
             </div>
-            <div class="mail-2"><div class="letterWithContent-2"><div class="word-2">祝老師生日快樂~<br><br>- 佑翔</div></div></div>
-            <div class="mail-3"><div class="letterWithContent-3"><div class="word-3">🏋️‍♂️<br><br>重訓加油!</div></div></div>
-            <div class="mail-4"><div class="letterWithContent-4"><div class="word-4">老師生日快樂!!🎂<br><br>- 泳晴</div></div></div>
-            <div class="mail-5"><div class="letterWithContent-5"><div class="word-5">Wish you<br>sol sol la sol do si~<br><br>- Lamero<br></div></div></div>
-            <div class="mail-6"><div class="letterWithContent-6"><div class="word-6">✂️🐠</div></div></div>
-            <div class="mail-7"><div class="letterWithContent-7"><div class="word-7">祝老師生日快樂~ 希望老師享受音樂和健身的生活！<br><br>- 致群</div></div></div>
-            <div class="mail-8"><div class="letterWithContent-8"><div class="word-8">&amp;#x751F; &amp;#x65E5; &amp;#x5FEB; &amp;#x6A02; &amp;#xFF0C; &amp;#x80FD; &amp;#x8DDF; &amp;#x8457; &amp;#x50CF; &amp;#x60A8; &amp;#x9019; &amp;#x9EBC; &amp;#x8A8D; &amp;#x771F; &amp;#x7684; &amp;#x6559; &amp;#x6388; &amp;#x5B78; &amp;#x7FD2; &amp;#xFF0C; &amp;#x6211; &amp;#x771F; &amp;#x7684; &amp;#x5F88; &amp;#x69AE; &amp;#x5E78; &amp;#x3002; &amp;#x4E5F; &amp;#x5E0C; &amp;#x671B; &amp;#x6211; &amp;#x6C92; &amp;#x6709; &amp;#x9020; &amp;#x6210; &amp;#x8001; &amp;#x5E2B; &amp;#x592A; &amp;#x591A; &amp;#x9EBB; &amp;#x7169;<br>- KYJ</div></div></div>
+            <div class="mail-2">
+                <div class="letterWithContent-2">
+                    <div class="word-2">祝老師生日快樂~<br><br>- 佑翔</div>
+                </div>
+            </div>
+            <div class="mail-3">
+                <div class="letterWithContent-3">
+                    <div class="word-3">🏋️‍♂️<br><br>重訓加油!</div>
+                </div>
+            </div>
+            <div class="mail-4">
+                <div class="letterWithContent-4">
+                    <div class="word-4">老師生日快樂!!🎂<br><br>- 泳晴</div>
+                </div>
+            </div>
+            <div class="mail-5">
+                <div class="letterWithContent-5">
+                    <div class="word-5">Wish you<br>sol sol la sol do si~<br><br>- Lamero<br></div>
+                </div>
+            </div>
+            <div class="mail-6">
+                <div class="letterWithContent-6">
+                    <div class="word-6">✂️🐠</div>
+                </div>
+            </div>
+            <div class="mail-7">
+                <div class="letterWithContent-7">
+                    <div class="word-7">祝老師生日快樂~ 希望老師享受音樂和健身的生活！<br><br>- 致群</div>
+                </div>
+            </div>
+            <div class="mail-8">
+                <div class="letterWithContent-8">
+                    <div class="word-8">&amp;#x751F; &amp;#x65E5; &amp;#x5FEB; &amp;#x6A02; &amp;#xFF0C; &amp;#x80FD;
+                        &amp;#x8DDF; &amp;#x8457; &amp;#x50CF; &amp;#x60A8; &amp;#x9019; &amp;#x9EBC; &amp;#x8A8D;
+                        &amp;#x771F; &amp;#x7684; &amp;#x6559; &amp;#x6388; &amp;#x5B78; &amp;#x7FD2; &amp;#xFF0C;
+                        &amp;#x6211; &amp;#x771F; &amp;#x7684; &amp;#x5F88; &amp;#x69AE; &amp;#x5E78; &amp;#x3002;
+                        &amp;#x4E5F; &amp;#x5E0C; &amp;#x671B; &amp;#x6211; &amp;#x6C92; &amp;#x6709; &amp;#x9020;
+                        &amp;#x6210; &amp;#x8001; &amp;#x5E2B; &amp;#x592A; &amp;#x591A; &amp;#x9EBB; &amp;#x7169;<br>-
+                        KYJ</div>
+                </div>
+            </div>
         </div>
         <p class="hint">Check your mail</p>
     </div>
